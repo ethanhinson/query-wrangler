@@ -1,6 +1,6 @@
 <?php
-// hook into qw_basics
-add_filter('qw_basics', 'qw_basic_settings_page_path',0);
+// hook into qw_basics 
+add_filter('qw_basics', 'qw_basic_settings_page_path',30);
 
 /*
  * Basic Settings
@@ -19,7 +19,7 @@ function qw_basic_settings_page_path($basics){
 
 function qw_basic_settings_page_path_form($basic, $options)
 {
-  $page_enabled = ($options['display']['types']['page']) ? 'checked="checked"' : '';
+  $page_enabled = (isset($options['display']['types']['page'])) ? 'checked="checked"' : '';
   $path = $options['display']['page']['path'];
   ?>
   <div>

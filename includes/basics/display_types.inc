@@ -22,13 +22,20 @@ function qw_basic_settings_display_types($basics){
  */
 function qw_basic_settings_display_types_default($display_types)
 {
-  $display_types['page'] = array(
+  /*$display_types['page'] = array(
     'title' => 'Page',
     'description' => 'Make the Page Path available for visitors of your website.',
-  );
+    'help' => 'When you create a Page Query, you give that query a path (URI) to display on.
+      After creating the query, you can visit that URI on your website to view the results.
+      This is a great way to create new, complex pages on your Wordpress site.
+      <br /><br />
+      <strong><em>Pages do not work with the Default permalink structure found <a href="<?php print get_bloginfo('wpurl'); ?>/wp-admin/options-permalink.php">here</a>.</em></strong>',
+  );*/
   $display_types['widget'] = array(
     'title' => 'Widget',
     'description' => 'Allow this query to be selected on the QW Widget form.',
+    'help' => 'The Query Wrangler comes with a reusable Wordpress Widget that an be places in sidebars.
+      When you create a query of the this type, that query becomes selectable in the Widget settings.',
   );
   return $display_types;
 }

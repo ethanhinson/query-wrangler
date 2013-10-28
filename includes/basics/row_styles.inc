@@ -91,7 +91,7 @@ function qw_basic_settings_row_style_form($basic, $options)
         foreach($row_styles as $type => $row_style){
           if (function_exists($row_style['settings_callback']))
           {
-            $row_style['values'] = $options['display']['row_style_settings'][$type];
+            $row_style['values'] = (isset($options['display']['row_style_settings'][$type])) ? $options['display']['row_style_settings'][$type] : array();
             ?>
             <div id="tab-row-style-settings-<?php print $row_style['hook_key']; ?>" class="qw-query-content">
               <span class="qw-setting-header"><?php print $row_style['title']; ?> Settings</span>

@@ -33,16 +33,14 @@
           foreach($basics as $basic)
           {
             // make sure item has form
-            if (isset($basic['form']) &&
-                // not page settings
-                $basic['type'] != 'page')
+            if (isset($basic['form']))
             { ?>
                 <div class="qw-query-title" title="qw-<?php print $basic['hook_key']; ?>">
                   <?php print $basic['title']; ?>
                   :
                   <span class="qw-setting-value">
                     <?php
-                      if ($options[$basic['type']][$basic['hook_key']]){
+                      if (isset($options[$basic['type']][$basic['hook_key']])){
                         print $options[$basic['type']][$basic['hook_key']];
                       }
                     ?>
@@ -53,35 +51,7 @@
           }
         ?>
       </div> <!-- /qw-query-args -->
-
-    <!-- Page Settings -->
       <div class="qw-clear-gone"><!-- ie hack -->&nbsp;</div>
-      <div id="qw-page-settings" class="qw-query-admin-options">
-        <h4>Page Settings</h4>
-        <?php
-          foreach($basics as $basic)
-          {
-            // make sure item has form
-            if (isset($basic['form']) &&
-                // page settings only
-                $basic['type'] == 'page')
-            { ?>
-                <div class="qw-query-title" title="qw-<?php print $basic['hook_key']; ?>">
-                  <?php print $basic['title']; ?>
-                  :
-                  <span class="qw-setting-value">
-                    <?php
-                      if ($options[$basic['type']][$basic['hook_key']]){
-                        print $options[$basic['type']][$basic['hook_key']];
-                      }
-                    ?>
-                  </span>
-                </div>
-              <?php
-            }
-          }
-        ?>
-      </div>
     </div>
     <!-- /column -->
 
@@ -89,7 +59,7 @@
     <div class="qw-query-admin-column">
       <?php
         // add contextual_filters and fields
-        $handler_types = array('sort', 'field');
+        $handler_types = array('field');
 
         foreach ($handler_types as $type){
           $handler = $handlers[$type];
@@ -103,7 +73,7 @@
     <div class="qw-query-admin-column">
       <?php
         // add sorts and add filters
-        $handler_types = array('contextual_filter','filter');
+        $handler_types = array('sort', 'filter');
 
         foreach ($handler_types as $type){
           $handler = $handlers[$type];
@@ -139,32 +109,35 @@
           $handler_types = array('sort','filter','field', 'contextual_filter');
           foreach($handler_types as $type)
           {
-            $handler = $handlers[$type];
-            ?>
-            <!-- edit <?php print $type; ?>s -->
-            <div id="existing-<?php print $type; ?>s">
-              <?php
-                if (is_array($handler['items'])){
-                  // tokens for fields
-                  $tokens = array();
-
-                  foreach($handler['items'] as $name => $item)
-                  {
-                    $args = array(
-                      $type => $item,
-                    );
-
-                    // if this is a field, add it's token and pass as template variable
-                    if ($handler['hook_key'] == 'field') {
-                      $tokens[] = '{{'.$item['name'].'}}';
-                      $args['tokens'] = $tokens;
-                    }
-                    print theme('query_'.$type, $args);
-                  }
-                }
+            if (isset($handlers[$type]))
+            {
+              $handler = $handlers[$type];
               ?>
-            </div>
-            <?php
+              <!-- edit <?php print $type; ?>s -->
+              <div id="existing-<?php print $type; ?>s">
+                <?php
+                  if (is_array($handler['items'])){
+                    // tokens for fields
+                    $tokens = array();
+  
+                    foreach($handler['items'] as $name => $item)
+                    {
+                      $args = array(
+                        $type => $item,
+                      );
+  
+                      // if this is a field, add it's token and pass as template variable
+                      if ($handler['hook_key'] == 'field') {
+                        $tokens[] = '{{'.$item['name'].'}}';
+                        $args['tokens'] = $tokens;
+                      }
+                      print theme('query_'.$type, $args);
+                    }
+                  }
+                ?>
+              </div>
+              <?php
+            }
           }
         ?>
 
@@ -174,33 +147,36 @@
 
           foreach ($handler_types as $type)
           {
-            $handler = $handlers[$type];
-            ?>
-            <!-- add sorts -->
-            <div id="qw-display-add-<?php print $type; ?>" class="qw-hidden">
-              <input class="add-handler-type" type="hidden" value="<?php print $type; ?>">
-              <p class="description"><?php print $handler['description']; ?></p>
-              <div class="qw-checkboxes">
-                <?php
-                  // loop through sorts
-                  foreach($handler['all_items'] as $item_key => $item)
-                  {
-                    ?>
-                    <label>
-                      <input type="checkbox"
-                             value="<?php print $item['type']; ?>" />
-                      <input class="qw-hander-hook_key"
-                             type="hidden"
-                             value="<?php print $item['hook_key']; ?>" />
-                      <?php print $item['title']; ?>
-                    </label>
-                    <p class="description qw-desc"><?php print $item['description']; ?></p>
-                    <?php
-                  }
-                ?>
+            if (isset($handlers[$type]))
+            {
+              $handler = $handlers[$type];
+              ?>
+              <!-- add sorts -->
+              <div id="qw-display-add-<?php print $type; ?>" class="qw-hidden">
+                <input class="add-handler-type" type="hidden" value="<?php print $type; ?>">
+                <p class="description"><?php print $handler['description']; ?></p>
+                <div class="qw-checkboxes">
+                  <?php
+                    // loop through sorts
+                    foreach($handler['all_items'] as $item_key => $item)
+                    {
+                      ?>
+                      <label>
+                        <input type="checkbox"
+                               value="<?php print $item['type']; ?>" />
+                        <input class="qw-hander-hook_key"
+                               type="hidden"
+                               value="<?php print $item['hook_key']; ?>" />
+                        <?php print $item['title']; ?>
+                      </label>
+                      <p class="description qw-desc"><?php print $item['description']; ?></p>
+                      <?php
+                    }
+                  ?>
+                </div>
               </div>
-            </div>
-            <?php
+              <?php
+            }
           }
         ?>
     </div><!-- options forms -->

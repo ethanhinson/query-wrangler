@@ -9,7 +9,7 @@ Plugin URI:        http://www.widgetwrangler.com/query-wrangler
 Description:       Query Wrangler provides an intuitive interface for creating complex WP queries as pages or widgets. Based on Drupal Views.
 Author:            Jonathan Daggerhart, Forrest Livengood
 Author URI:        http://www.websmiths.co
-Version:           1.6beta1
+Version:           2.0beta1
 
 ******************************************************************
 
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // some useful definitions
-define('QW_VERSION', 1.6);
+define('QW_VERSION', 2.0);
 define('QW_PLUGIN_DIR', dirname(__FILE__));
 define('QW_PLUGIN_URL', plugins_url( '', __FILE__ ));
 define('QW_DEFAULT_THEME', 'views');
@@ -72,7 +72,7 @@ function qw_includes_default($includes){
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/footer.inc';
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/empty.inc';
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/wrapper_settings.inc';
-  $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/page_path.inc';
+  //$includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/page_path.inc'; // disabled
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/basics/page_template.inc';
 
   // fields
@@ -92,9 +92,9 @@ function qw_includes_default($includes){
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/post_types.inc';
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/taxonomies.inc';
 
-  // contextual_filters
-  $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/contextual_filters/contexts.inc';
-  $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/contextual_filters/taxonomies.inc';
+  // contextual_filters (disabled for now)
+  //$includes['frontend'][] = QW_PLUGIN_DIR.'/includes/contextual_filters/contexts.inc';
+  //$includes['frontend'][] = QW_PLUGIN_DIR.'/includes/contextual_filters/taxonomies.inc';
 
   // sort options
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/sorts/sorts.inc';
@@ -190,7 +190,7 @@ function qw_init_admin(){
 function qw_menu()
 {
   global $menu;
-  // get the first available menu placement around 30, trivial, I know
+  // get the first available menu placement around 30 abitrarily
   $menu_placement = 1000;
   for($i=30;$i<100;$i++){
     if(!isset($menu[$i])){ $menu_placement = $i; break; }

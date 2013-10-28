@@ -33,7 +33,7 @@
     <p class="description"><?php print $filter['description']; ?></p>
 
     <?php
-      if ($filter['form'])
+      if (isset($filter['form']))
       { ?>
         <div class="qw-filter-form">
           <?php print $filter['form']; ?>
@@ -44,9 +44,9 @@
       // exposed form and settings
       if(isset($filter['exposed_form']))
       {
-        $is_exposed = ($filter['values']['is_exposed']) ? 'checked="checked"': '';
-        $limit_values = ($filter['values']['exposed_limit_values']) ? 'checked="checked"': '';
-        $default_values = ($filter['values']['exposed_default_values']) ? 'checked="checked"': '';
+        $is_exposed = (isset($filter['values']['is_exposed'])) ? 'checked="checked"': '';
+        $limit_values = (isset($filter['values']['exposed_limit_values'])) ? 'checked="checked"': '';
+        $default_values = (isset($filter['values']['exposed_default_values'])) ? 'checked="checked"': '';
         ?>
         <div class="qw-exposed-form">
           <div class="qw-setting">

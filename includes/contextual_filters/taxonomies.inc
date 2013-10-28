@@ -30,7 +30,7 @@ function qw_contextual_filter_taxonomies($contextual_filters){
 
       // update titles for built in taxonomies
       if ($t->_builtin){
-        $contextual_filters['taxonomy_'.$t->name]['title'] = $t->label;
+        $contextual_filters['taxonomy_'.$t->name]['title'] = 'Taxonomy: '.$t->label;
       }
     }
   }

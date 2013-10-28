@@ -1,8 +1,8 @@
 <?php
-  $link_selected            = ($field['values']['link']) ? 'checked="checked"' : '';
-  $has_label                = ($field['values']['has_label']) ? 'checked="checked"' : '';
-  $rewrite_output_selected  = ($field['values']['rewrite_output']) ? 'checked="checked"': '';
-  $exclude_display_selected = ($field['values']['exclude_display']) ? 'checked="checked"' : '';
+  $link_selected            = (isset($field['values']['link'])) ? 'checked="checked"' : '';
+  $has_label                = (isset($field['values']['has_label'])) ? 'checked="checked"' : '';
+  $rewrite_output_selected  = (isset($field['values']['rewrite_output'])) ? 'checked="checked"': '';
+  $exclude_display_selected = (isset($field['values']['exclude_display'])) ? 'checked="checked"' : '';
 ?>
 <div id="qw-field-<?php print $field['name']; ?>" class="qw-field qw-sortable-item qw-item-form">
   <span class="qw-setting-header">
@@ -39,7 +39,7 @@
 
     <p class="description"><?php print $field['description']; ?></p>
 
-    <?php if ($field['form']) { ?>
+    <?php if (isset($field['form'])) { ?>
       <div class="qw-field-form qw-setting">
         <?php print $field['form']; ?>
       </div>
@@ -76,7 +76,7 @@
           <strong>Label Text: </strong>
           <input type="text"
                  name="<?php print $field['form_prefix']; ?>[label]"
-                 value="<?php print $field['values']['label']; ?>"/>
+                 value="<?php print (isset($field['values']['label'])) ? $field['values']['label'] : ''; ?>"/>
         </div>
       </div>
 
@@ -92,7 +92,7 @@
         </div>
         <div class="qw-options-group-content qw-field-options-hidden">
           <textarea name='<?php print $field['form_prefix']; ?>[custom_output]'
-                    class="qw-field-textarea"><?php print ($field['values']['custom_output']) ? qw_textarea($field['values']['custom_output']): ''; ?></textarea>
+                    class="qw-field-textarea"><?php print (isset($field['values']['custom_output'])) ? qw_textarea($field['values']['custom_output']): ''; ?></textarea>
           <div class="qw-field-tokens">
             <p class="description">Available replacement tokens.  These tokens will be replaced with the processed results of their fields.</p>
             <?php

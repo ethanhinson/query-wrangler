@@ -75,7 +75,7 @@
       <?php
         if ($contextual_filter['can_override'])
         {
-          $do_override = ($contextual_filter['values']['do_override']) ? 'checked="checked"': '';
+          $do_override = (isset($contextual_filter['values']['do_override'])) ? 'checked="checked"': '';
           ?>
           <label class="qw-label">
             Override pages:
@@ -89,7 +89,7 @@
       ?>
 
       <?php
-        if ($contextual_filter['override_form'])
+        if (isset($contextual_filter['override_form']))
         { ?>
           <div class="qw-contextual_filter-override_form">
             <?php print $contextual_filter['override_form']; ?>

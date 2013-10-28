@@ -67,7 +67,7 @@ function qw_filter_post_types_exposed_settings_form($filter)
 /*
  * Process submitted exposed form values
  */
-function qw_filter_post_types_exposed_process(&$args, $filter, $values){
+function qw_filter_post_types_exposed_process(&$args, $filter, &$values){
   $alter_args = false;
   qw_filter_post_types_exposed_default_values($filter, $values);
 
@@ -92,13 +92,13 @@ function qw_filter_post_types_exposed_process(&$args, $filter, $values){
   }
 
   if ($alter_args){
-    qw_filter_post_types_args(&$args, $filter);
+    qw_filter_post_types_args($args, $filter);
   }
 }
 /*
  * Exposed forms
  */
-function qw_filter_post_types_exposed_form($filter, $values){
+function qw_filter_post_types_exposed_form($filter, &$values){
   // adjust for default values
   qw_filter_post_types_exposed_default_values($filter, $values);
 
@@ -128,7 +128,7 @@ function qw_filter_post_types_exposed_default_values($filter, &$values){
 /*
  * Exposed post types as select box
  */
-function qw_filter_post_types_exposed_form_select($filter, $values)
+function qw_filter_post_types_exposed_form_select($filter, &$values)
 {
   // set submitted values
   if (isset($values)){
@@ -160,7 +160,7 @@ function qw_filter_post_types_exposed_form_select($filter, $values)
 /*
  * Exposed post types as checkboxes
  */
-function qw_filter_post_types_exposed_form_checkboxes($filter, $values)
+function qw_filter_post_types_exposed_form_checkboxes($filter, &$values)
 {
   // adjust for submitted values
   if (!empty($values)){

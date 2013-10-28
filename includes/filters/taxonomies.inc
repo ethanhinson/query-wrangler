@@ -27,7 +27,7 @@ function qw_filter_taxonomies($filters){
 
       // update titles for built in taxonomies
       if ($t->_builtin){
-        $filters['taxonomy_'.$t->name]['title'] = $t->label;
+        $filters['taxonomy_'.$t->name]['title'] = 'Taxonomy: '.$t->label;
       }
     }
   }
@@ -95,7 +95,7 @@ function qw_filter_taxonomies_exposed_process(&$args, $filter, $values){
   }
 
   if ($alter_args){
-    qw_filter_taxonomies_args(&$args, $filter);
+    qw_filter_taxonomies_args($args, $filter);
   }
 }
 /*

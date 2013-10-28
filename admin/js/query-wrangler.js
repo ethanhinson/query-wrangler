@@ -7,41 +7,43 @@ QueryWrangler.form_backup = '';
 // changes have been made
 QueryWrangler.changes = false;
 
+(function ($) {
+  
 /*
  * Ajax preview
  */
 QueryWrangler.get_preview = function() {
   // show throbber
-  jQuery('#query-preview-controls').removeClass('query-preview-inactive').addClass('query-preview-active');
+  $('#query-preview-controls').removeClass('query-preview-inactive').addClass('query-preview-active');
   // serialize form data
-  QueryWrangler.form_backup = jQuery('form#qw-edit-query-form').serialize();
+  QueryWrangler.form_backup = $('form#qw-edit-query-form').serialize();
   // prepare post data
   var post_data_form = {
     'action': 'qw_form_ajax',
     'form': 'preview',
-    'type': jQuery('#preview-display-type').val(),
+    'type': $('#preview-display-type').val(),
     'options': QueryWrangler.form_backup,
     'query_id': QueryWrangler.query.id
   };
 
   // make ajax call
-  jQuery.ajax({
+  $.ajax({
     url: QueryWrangler.ajaxForm,
     type: 'POST',
     async: false,
     data: post_data_form,
     dataType: 'json',
     success: function(results){
-      jQuery('#query-preview-target').html(results.preview);
-      jQuery('#qw-show-arguments-target').html(results.args);
-      jQuery('#qw-show-display-target').html(results.display);
-      jQuery('#qw-show-wpquery-target').html(results.wpquery);
-      jQuery('#qw-show-query-time').html(results.time);
-      jQuery('#qw-show-template-files').html(results.templates);
+      $('#query-preview-target').html(results.preview);
+      $('#qw-show-arguments-target').html(results.args);
+      $('#qw-show-display-target').html(results.display);
+      $('#qw-show-wpquery-target').html(results.wpquery);
+      $('#qw-show-query-time').html(results.time);
+      $('#qw-show-template-files').html(results.templates);
     }
   });
   // hide throbber
-  jQuery('#query-preview-controls').removeClass('query-preview-active').addClass('query-preview-inactive');
+  $('#query-preview-controls').removeClass('query-preview-active').addClass('query-preview-inactive');
 }
 
 /*
@@ -49,29 +51,33 @@ QueryWrangler.get_preview = function() {
  */
 QueryWrangler.generate_field_tokens = function() {
   var tokens = [];
-  jQuery('#existing-fields div.qw-field').each(function(){
+  $('#qw-query-field-list div.qw-query-title').each(function(i, item){
     // field name
-    var field_name = jQuery(this).find('.qw-field-name').val();
+    var field_name = $(item).attr('title').replace('qw-field-', '');
     // add tokens
     tokens.push('<li>{{'+field_name+'}}</li>');
+    
     // target the field and insert tokens
-    jQuery('#qw-field-'+field_name+' ul.qw-field-tokens-list').html(tokens.join(""));
-  });
+    $('#qw-field-'+field_name+' ul.qw-field-tokens-list').html(tokens.join(""));
+  }); 
 }
 
 /*
  * Init()
  */
-jQuery(document).ready(function(){
+$(document).ready(function(){
   // preview
-  jQuery('#get-preview').click(QueryWrangler.get_preview);
+  $('#get-preview').click(QueryWrangler.get_preview);
   QueryWrangler.get_preview();
 
   // accordions
-  jQuery('#query-details').accordion({
+  $('#query-details').accordion({
       header: '> div > .qw-setting-header',
+			heightStyle: "content",
       collapsible: true,
       active: false,
       autoHeight: false
   });
 });
+
+})(jQuery);

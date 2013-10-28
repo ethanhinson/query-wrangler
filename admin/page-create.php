@@ -62,21 +62,16 @@
 </div>
 
 <div id="qw-create-description">
-  <div>
-    <h3>Widgets</h3>
-    <p>
-      The Query Wrangler comes with a reusable Wordpress Widget that an be places in sidebars.
-      When you create a query of the this type, that query becomes selectable in the Widget settings.
-    </p>
-  </div>
-  <div>
-    <h3>Pages</h3>
-    <p>
-      When you create a Page Query, you give that query a path (URI) to display on.
-      After creating the query, you can visit that URI on your website to view the results.
-      This is a great way to create new, complex pages on your Wordpress site.
-      <br /><br />
-      <strong><em>Pages do not work with the Default permalink structure found <a href="<?php print get_bloginfo('wpurl'); ?>/wp-admin/options-permalink.php">here</a>.</em></strong>
-    </p>
-  </div>
+  <?php
+    foreach ($display_types as $display_type)
+    { ?>
+      <div>
+        <h3><?php print $display_type['title']; ?></h3>
+        <p>
+          <?php print $display_type['help']; ?>
+        </p>
+      </div>    
+      <?php
+    }
+  ?>
 </div>

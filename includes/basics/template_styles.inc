@@ -77,7 +77,7 @@ function qw_basic_settings_style_form($basic, $options)
     <div id="display-style-settings">
       <?php
         foreach($styles as $type => $style){
-          if (function_exists($style['settings_callback']))
+          if (isset($style['settings_callback']) && function_exists($style['settings_callback']))
           {
             $style['values'] = $options['display']['style_settings'][$type];
             ?>

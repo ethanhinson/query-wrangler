@@ -38,9 +38,9 @@ function qw_filter_meta_value_form($filter)
 /*
  * Process submitted exposed form values
  */
-function qw_filter_meta_value_exposed_process(&$args, $filter, $value){
+function qw_filter_meta_value_exposed_process(&$args, $filter, &$values){
   // default values if submitted is empty
-  qw_filter_meta_value_exposed_default_values($filter, &$values);
+  qw_filter_meta_value_exposed_default_values($filter, $values);
 
   // check allowed values
   if (isset($filter['values']['exposed_limit_values'])){
@@ -56,7 +56,7 @@ function qw_filter_meta_value_exposed_process(&$args, $filter, $value){
 /*
  * Exposed form
  */
-function qw_filter_meta_value_exposed_form($filter, $values)
+function qw_filter_meta_value_exposed_form($filter, &$values)
 {
   // default values
   qw_filter_meta_value_exposed_default_values($filter, $values);

@@ -21,7 +21,6 @@ function qw_admin_create_js(){
 }
 // Base JS
 function qw_admin_js(){
-  print 'a';
   wp_enqueue_script('qw-admin-js',
                   plugins_url('/admin/js/query-wrangler.js', dirname(__FILE__)),
                   array('jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-dialog', 'jquery-ui-accordion'),
@@ -53,7 +52,7 @@ function qw_edit_json(){
     'allFields' => $handlers['field']['all_items'],
     'allFilters'  => $handlers['filter']['all_items'],
     'allSortOptions' => $handlers['sort']['all_items'],
-    'allContextualFilters' => $handlers['contextual_filter']['all_items'],
+    'allContextualFilters' => isset($handlers['contextual_filter']['all_items']) ? $handlers['contextual_filter']['all_items'] : array(),
     'allStyles' => qw_all_styles(),
     'allRowStyles' => qw_all_row_styles(),
     'allPostTypes' => qw_all_post_types(),

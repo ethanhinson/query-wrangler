@@ -98,7 +98,7 @@ function qw_generate_query_options($query_id, $options_override = array(), $full
   $options['meta']['name'] = $rows[0]->name;
   $options['meta']['style'] = $style['hook_key'];
   $options['meta']['template'] = $style['template'];
-  $options['meta']['type'] = $options['display']['types']['this_instance'];
+  $options['meta']['type'] = (isset($options['display']['types']['this_instance'])) ? $options['display']['types']['this_instance'] : 'widget';
   $options['meta']['pagination'] = (isset($options['args']['paged'])) ? true : false;
   $options['meta']['header'] = $options['display']['header'];
   $options['meta']['footer'] = $options['display']['footer'];
@@ -123,7 +123,7 @@ function qw_generate_query_args($options = array(), $options_override = array())
   // standard arguments
   $args['posts_per_page'] = ($options['args']['posts_per_page']) ? $options['args']['posts_per_page']: 5;
   $args['offset']         = ($options['args']['offset']) ? $options['args']['offset']: 0;
-  $args['paged']          = $options['args']['paged'];
+  $args['paged']          = (isset($options['args']['paged'])) ? $options['args']['paged'] : 0;
   $args['post_status']    = $options['args']['post_status'];
 
   $submitted_data = qw_exposed_submitted_data();

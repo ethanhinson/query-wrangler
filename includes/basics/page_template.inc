@@ -1,6 +1,6 @@
 <?php
 // hook into qw_basics
-add_filter('qw_basics', 'qw_basic_settings_page_template',0);
+add_filter('qw_basics', 'qw_basic_settings_page_template');
 
 /*
  * Basic Settings

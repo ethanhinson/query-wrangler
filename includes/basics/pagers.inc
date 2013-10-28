@@ -2,7 +2,7 @@
 // add default pager types
 add_filter('qw_pager_types', 'qw_pager_types_default', 0);
 // hook into qw_basics
-add_filter('qw_basics', 'qw_basic_settings_pager',0);
+add_filter('qw_basics', 'qw_basic_settings_pager');
 
 /*
  * Basic Settings
@@ -48,7 +48,7 @@ function qw_basic_settings_pager_form($basic, $options)
 {
   $pager = $options['display']['page']['pager'];
   $pager_types = qw_all_pager_types();
-  $use_pager = ($pager['active']) ? 'checked="checked"': '';
+  $use_pager = (isset($pager['active'])) ? 'checked="checked"': '';
   ?>
   <div class="qw-setting">
     <label class="qw-label">Use Pagination:</label>

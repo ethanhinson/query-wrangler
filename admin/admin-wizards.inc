@@ -3,11 +3,13 @@
 add_filter('qw_wizards', 'qw_wizards_default');
 
 function qw_wizards_default($wizards){
+/*
   $wizards['default'] = array(
     'title' => 'Default',
     'description' => 'Very few settings at all.',
     'data_callback' => 'qw_wizard_default_data',
   );
+*/
   $wizards['wp_default'] = array(
     'title' => 'WP_Query Default',
     'description' => 'All default settings for an empty WP_Query.<br />Like, $query = new WP_Query();',
@@ -20,7 +22,7 @@ function qw_wizards_default($wizards){
  * Default values for  new query
  *
  * @return array Default query settings
- */
+ *//*
 function qw_wizard_default_data(){
   $query = array(
     'args' => array(
@@ -41,7 +43,7 @@ function qw_wizard_default_data(){
 
   return $query;
 }
-
+*/
 function qw_wizard_wp_default_data(){
 // post_type  = post
 // post_status = publish
@@ -65,6 +67,14 @@ function qw_wizard_wp_default_data(){
       'empty'  => '',
       'wrapper-classes' => '',
       'row_style'       => 'posts',
+      'row_style_settings' => array (
+        'posts' => array (
+          'size' => 'complete',
+        ),
+        'fields' => array (
+          'placeholder' => 'none',
+        ),
+      ),
       'post_settings'   => array(
         'size' => 'complete',
       ),
@@ -91,6 +101,13 @@ function qw_wizard_wp_default_data(){
           'post_types' => array(
             'post' => 'post',
           ),
+          'exposed_label' => '',
+          'exposed_desc' => '',
+          'exposed_key' => '',
+          'exposed_settings' => 
+          array (
+            'type' => 'select',
+          ),          
         ),
       ),
     ),

@@ -13,16 +13,17 @@
 #qw-query-admin-options-wrap {
   margin: 6px;
   padding: 4px 8px;
+	font-size: 1.1em;
 }
 #qw-list-title {
   width: 70%;
 }
-#qw-query-field-list,
-#qw-query-contextual_filter-list,
-#qw-query-filter-list,
-#qw-query-sort-list {
-  border-top: 1px solid #bbb;
-  padding: 4px 0px;
+#qw-query-args,
+#qw-page-settings,
+#qw-query-fields,
+#qw-query-filters,
+#qw-query-sorts {
+  padding: 0px;
 }
 #qw-show-arguments {
   margin-top: 32px;
@@ -34,24 +35,24 @@
 }
 div.qw-query-title {
   display: block;
-  padding: 2px 8px;
-}
-div.qw-query-title span.qw-setting-value,
-#qw-query-filter-list span.qw-setting-title,
-#qw-query-contextual_filter-list span.qw-setting-title,
-#qw-query-field-list span.qw-setting-title,
-#qw-query-sort-list span.qw-setting-title {
-  color: blue;
-  text-decoration: underline;
+  padding: 4px 8px;
+  color: #21759B;
+  
   cursor: pointer;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 1px;
 }
-#qw-query-filter-list span.qw-setting-value,
-#qw-query-contextual_filter-list span.qw-setting-value,
-#qw-query-field-list span.qw-setting-value,
-#qw-query-sort-list span.qw-setting-value {
-  color: black;
-  text-decoration: none;
-  font-weight: normal;
+div.qw-query-title span.qw-setting-title {
+	text-decoration: underline;
+	font-weight: bold;
+}
+div.qw-query-title span.qw-setting-value {
+	color: #444;
+}
+div.qw-query-title:hover,
+div.qw-query-title:hover span.qw-setting-value {
+	background: #fff;
+	color: #d54e21;
 }
 .qw-checkboxes {
   border: 1px solid #bbb;
@@ -70,13 +71,15 @@ div.qw-query-title span.qw-setting-value,
 .qw-query-admin-options{
   background: #f6f6f6;
   border: 1px solid #bbb;
-  padding-bottom: 4px;
   margin-bottom: 12px;
 }
 .qw-query-admin-options h4 {
-  background: #efefef;
-  margin: 0px 0px 2px;
-  padding: 3px 4px;
+  margin: 0px 0px 4px;
+  padding: 0px 4px 0px 8px;
+	line-height: 32px;
+	border-bottom: 1px solid #444;
+	font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",sans-serif;
+	background: linear-gradient(to top, #ECECEC, #F9F9F9) repeat scroll 0 0 #F1F1F1;
 }
 .qw-clear-gone {
   float: none;
@@ -89,19 +92,30 @@ ul.qw-field-tokens-list li {
   font-weight: bold;
 }
 .qw-field-options {
-  margin: 4px 4px 4px 0px;
+  margin: 4px 180px 4px 0px;
   padding: 4px;
 }
-.qw-query-add-titles span {
-  display: block;
-  text-align: center;
-  width: 48%;
-  float: left;
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
+.qw-query-add-titles {
+	float: right;
+  background: transparent;
 }
-
+.qw-query-add-titles span {
+	display: block;
+	float: right;
+	padding: 0px 6px;	
+	color: #21759B;
+	cursor: pointer;
+	line-height: 32px
+}
+.qw-query-add-titles span:hover {
+	background: #fff;
+	color: #d54e21;
+}
+span.qw-rearrange-title{}
+.qw-query-add-titles span.qw-query-title {
+	border-right: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+}
 .qw-checkboxes {
   border: 1px solid #bbb;
   background: #fff;
@@ -138,7 +152,7 @@ ul.qw-field-tokens-list li {
   padding: 4px 20px;
 }
 .qw-field-textarea {
-  width: 100%;
+  width: 600px;
   height: 300px;
 }
 .qw-create {
@@ -168,8 +182,18 @@ ul.qw-field-tokens-list li {
 .qw-sortable {
   padding: .4em .5em;
 }
+
 li.qw-sortable span.qw-setting-value {
   color: #000;
   text-decoration: none;
   cursor: default;
+}
+.qw-sortable .qw-query-title {
+	border-bottom: none;
+}
+.ui-dialog .ui-dialog-titlebar-close span.ui-button-text {
+	display: none;
+}
+
+.ui-dialog .qw-weight {
 }

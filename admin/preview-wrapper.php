@@ -1,3 +1,6 @@
+<?php
+  $display_types = qw_all_display_types();
+?>
 <!-- Preview -->
   <div id="query-preview" class="qw-query-option">
     <div id="query-preview-controls" class="query-preview-inactive">
@@ -10,8 +13,13 @@
         </label>
       <?php } ?>
       <select id="preview-display-type" name="preview-display-type">
-        <option value="page">Page</option>
-        <option value="widget">Widget</option>
+        <?php
+          foreach ($display_types as $key => $display_type)
+          { ?>
+            <option value="<?php print $key; ?>"><?php print $display_type['title']; ?></option>
+            <?php
+          }
+        ?>
       </select>
       <div id="get-preview" class="qw-button">Preview</div>
     </div>

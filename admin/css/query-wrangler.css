@@ -1,4 +1,7 @@
-
+.clear-left{
+  float: none;
+  clear: left;
+}
 textarea.qw-meta-value {
   width: 500px;
   height: 120px;
@@ -76,15 +79,10 @@ label.qw-label {
   float: left;
   margin-right: 12px;
 }
-.clear-left {
-  float: none;
-  clear: left;
-}
 .qw-setting {
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid #bbb;
-  clear: left;
 }
 .qw-setting-header {
   display: block;
@@ -113,8 +111,11 @@ label.qw-field-checkbox input {
 #query-actions {
   float: right;
 }
-.qw-weight {
+.qw-weight-container {
   float: right;
+	clear: right;
+	margin-top: 16px;
+	display: none;
 }
 .qw-remove {
   float: right;
@@ -160,10 +161,6 @@ a.toplevel_page_query-wrangler {
   border-bottom: 1px solid #bbb;
   border-top: 1px solid #bbb;
   background-color: #efefef;
-}
-#wizard-descriptions {
-  border: 1px dashed #bbb;
-  padding: 3px;
 }
 #qw-settings-page {
   border: 1px solid #444;

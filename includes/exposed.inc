@@ -39,7 +39,7 @@ function qw_generate_exposed_handlers($options){
  */
 function qw_process_exposed_handlers($options){
   // look for exposed filters or sorts
-  if(is_array($options['args']['sorts'])){
+  if(isset($options['args']['sorts']) && is_array($options['args']['sorts'])){
     $all_sorts = qw_all_sort_options();
     $exposed_sorts = array();
     foreach($options['args']['sorts'] as $name => $sort) {
@@ -53,7 +53,7 @@ function qw_process_exposed_handlers($options){
       }
     }
   }
-  if(is_array($options['args']['filters'])){
+  if(isset($options['args']['filters']) && is_array($options['args']['filters'])){
     $exposed_filters = array();
     $all_filters = qw_all_filters();
     foreach($options['args']['filters'] as $name => $filter) {
@@ -69,11 +69,11 @@ function qw_process_exposed_handlers($options){
   }
 
   $exposed = array();
-  if (count($exposed_filters) > 0){
+  if (isset($exposed_filters) && count($exposed_filters) > 0){
     do_action_ref_array('qw_process_exposed_filters', array(&$exposed_filters));
     $exposed['filters'] = $exposed_filters;
   }
-  if (count($exposed_sorts) > 0){
+  if (isset($exposed_sorts) && count($exposed_sorts) > 0){
     do_action_ref_array('qw_process_exposed_sorts', array(&$exposed_sorts));
     $exposed['sorts'] = $exposed_sorts;
   }

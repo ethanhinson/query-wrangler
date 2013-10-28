@@ -60,7 +60,7 @@ function qw_template_scan($options)
 {
   global $wpdb;
   $query_id = $options['query-id'];
-  $query = $wpdb->get_row('SELECT slug FROM '.$wpdb->prefix.'query_wrangler WHERE id ='.$wpdb->escape($query_id));
+  $query = $wpdb->get_row('SELECT slug FROM '.$wpdb->prefix.'query_wrangler WHERE id ='.esc_sql($query_id));
   $slug = $query->slug;
   $options = $options['qw-query-options'];
   $all_styles = qw_all_styles();

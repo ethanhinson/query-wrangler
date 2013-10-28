@@ -30,6 +30,7 @@ function qw_handlers_default($handlers){
     'form_prefix'   => '[args][filters]',
     'wrapper_template' => 'query_filter',
   );
+/* Disabled for now
   $handlers['contextual_filter'] = array(
     'title' => 'Contextual Filter',
     'description' => 'Select contextual filters to affect the query results based on the context of where the query is displayed.',
@@ -38,7 +39,7 @@ function qw_handlers_default($handlers){
     'form_prefix'   => '[args][contextual_filters]',
     'wrapper_template' => 'query_contextual_filter',
   );
-
+*/
   return $handlers;
 }
 
@@ -170,7 +171,7 @@ function qw_preprocess_handlers($options){
  */
 function qw_handler_make_form(&$handler){
   // this handler's form
-  if (function_exists($handler['form_callback'])){
+  if (isset($handler['form_callback']) && function_exists($handler['form_callback'])){
     ob_start();
       $handler['form_callback']($handler);
     $handler['form'] = ob_get_clean();
