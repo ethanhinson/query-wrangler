@@ -35,9 +35,9 @@ QueryWrangler.get_preview = function() {
     dataType: 'json',
     success: function(results){
       $('#query-preview-target').html(results.preview);
-      $('#qw-show-arguments-target').html(results.args);
-      $('#qw-show-display-target').html(results.display);
-      $('#qw-show-wpquery-target').html(results.wpquery);
+      $('#qw-show-wpquery_args-target').html(results.wpquery_args);
+      $('#qw-show-wpquery_results-target').html(results.wpquery_results);
+      $('#qw-show-wpquery_php-target').html(results.wpquery_php);
       $('#qw-show-query-time').html(results.time);
       $('#qw-show-template-files').html(results.templates);
     }

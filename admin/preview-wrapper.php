@@ -34,23 +34,17 @@
 
     <div id="query-details">
       <div class="group">
-        <div class="qw-setting-header">WP_Query Arguments</div>
-        <div id="qw-show-arguments-target">
-          <!-- args -->
-        </div>
-      </div>
-      <div class="group">
-        <div class="qw-setting-header">Resulting WP_Query Object</div>
-        <div id="qw-show-wpquery-target">
+        <div class="qw-setting-header">PHP WP_Query Code</div>
+        <div id="qw-show-wpquery_php-target">
           <!-- WP_Query -->
         </div>
       </div>
       <div class="group">
-        <div class="qw-setting-header">Display Settings</div>
-        <div id="qw-show-display-target">
-          <!-- display -->
+        <div class="qw-setting-header">Resulting WP_Query Object</div>
+        <div id="qw-show-wpquery_results-target">
+          <!-- WP_Query -->
         </div>
-      </div>
+      </div> 
       <div class="group">
         <div class="qw-setting-header">Template Files</div>
         <div id="qw-show-template-files">
@@ -63,5 +57,11 @@
           <!-- Query Time -->
         </div>
       </div>
+      <div class="group">
+        <div class="qw-setting-header">QW Arguments Array</div>
+        <div id="qw-show-wpquery_args-target">
+          <!-- args -->
+        </div>
+      </div>     
     </div>
   </div>

@@ -47,6 +47,9 @@
         $is_exposed = (isset($filter['values']['is_exposed'])) ? 'checked="checked"': '';
         $limit_values = (isset($filter['values']['exposed_limit_values'])) ? 'checked="checked"': '';
         $default_values = (isset($filter['values']['exposed_default_values'])) ? 'checked="checked"': '';
+        $exposed_label = (isset($filter['values']['exposed_label'])) ? $filter['values']['exposed_label'] : "";
+        $exposed_desc = (isset($filter['values']['exposed_desc'])) ? $filter['values']['exposed_desc'] : "";
+        $exposed_key = (isset($filter['values']['exposed_key'])) ? $filter['values']['exposed_key'] : "";
         ?>
         <div class="qw-exposed-form">
           <div class="qw-setting">
@@ -82,7 +85,7 @@
             <label class="qw-label">Exposed Label:</label>
             <input type="text"
                    name='<?php print $filter['form_prefix']; ?>[exposed_label]'
-                   value="<?php print $filter['values']['exposed_label']; ?>" />
+                   value="<?php print $exposed_label; ?>" />
             <p class="description">Label for the exposed form item.</p>
           </div>
           <div>
@@ -90,17 +93,17 @@
             <input class="qw-text-long"
                    type="text"
                    name='<?php print $filter['form_prefix']; ?>[exposed_desc]'
-                   value="<?php print $filter['values']['exposed_desc']; ?>" />
+                   value="<?php print $exposed_desc; ?>" />
             <p class="description">Useful for providing help text to a user.</p>
           </div>
           <div>
             <label class="qw-label">Exposed Key:</label>
             <input type="text"
                    name='<?php print $filter['form_prefix']; ?>[exposed_key]'
-                   value="<?php print $filter['values']['exposed_key']; ?>" />
+                   value="<?php print $exposed_key; ?>" />
             <p class="description">URL ($_GET) key for the filter.  Useful for multiple forms on a single page.</p>
           </div>
-          <?php if ($filter['exposed_settings_form']){ ?>
+          <?php if (isset($filter['exposed_settings_form'])){ ?>
             <div class="qw-exposed-settings-form">
               <?php print $filter['exposed_settings_form']; ?>
             </div>

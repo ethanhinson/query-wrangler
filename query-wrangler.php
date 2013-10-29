@@ -91,6 +91,7 @@ function qw_includes_default($includes){
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/post_parent.inc';
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/post_types.inc';
   $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/taxonomies.inc';
+  $includes['frontend'][] = QW_PLUGIN_DIR.'/includes/filters/taxonomy_relation.inc';
 
   // contextual_filters (disabled for now)
   //$includes['frontend'][] = QW_PLUGIN_DIR.'/includes/contextual_filters/contexts.inc';

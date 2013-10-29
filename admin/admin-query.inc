@@ -151,6 +151,15 @@ function qw_query_export($query_id){
   return "\$query = ".$export.";";
 }
 
+function qw_query_clean_export($string){
+  $search = array(
+    // find => replace
+    "=> \n  " => "=> ",
+    "array (" => "array("
+  );
+  return str_replace(array_keys($search), array_values($search), $string);
+}
+
 /*
  * Import a query into the database
  *

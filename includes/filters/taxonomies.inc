@@ -39,7 +39,7 @@ function qw_filter_taxonomies($filters){
  * Convert values into query args
  */
 function qw_filter_taxonomies_args(&$args, $filter){
-  if (!is_array($args['tax_query'])){
+  if (isset($args['tax_query']) && !is_array($args['tax_query'])){
     $args['tax_query'] = array();
   }
 //krumo('tax filter args');//krumo($args);
